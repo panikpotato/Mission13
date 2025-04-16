@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/dc825314-826e-4a93-94e3-7d76c69fd9b5/resourceGroups/appsvc_windows_eastus/providers/Microsoft.Web/sites/Books-joshuayang-Backend",
+  "appService.deploySubpath": "backend\\Bookstore.API\\publish"
+}
