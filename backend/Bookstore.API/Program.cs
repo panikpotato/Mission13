@@ -11,14 +11,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<EntertainmentAgencyExampleContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 
-// ✅ CORS policy for local and deployed frontend access
+// ✅ CORS policy that supports both local and deployed frontend
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactAppBlah", policy =>
     {
         policy.WithOrigins(
             "http://localhost:3000",
-            "https://your-frontend-site.com" // optional: replace with actual if deployed
+            "https://wonderful-glacier-0aee09d1e.6.azurestaticapps.net" // ✅ your deployed frontend
         )
         .AllowAnyHeader()
         .AllowAnyMethod();
@@ -34,7 +34,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// ✅ Make sure this matches the policy name above
 app.UseCors("AllowReactAppBlah");
+
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
