@@ -1,26 +1,25 @@
 import './App.css';
-import BooksPage from './pages/BooksPage';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CartPage from './pages/CartPage';
-import AddBook from './pages/AddBook';
+import { Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
-import AdminBooksPage from './pages/AdminBooksPage';
+
+import HomePage from './pages/HomePage';
+import EntertainerList from './pages/EntertainerList';
+import EntertainerDetails from './pages/EntertainerDetails';
+import EntertainerForm from './pages/EntertainerForm';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <>
-      <CartProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<BooksPage />} />
-            <Route path="/books" element={<BooksPage />} />
-            <Route path="/add/:title/:bookID/:price" element={<AddBook />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/adminBooks" element={<AdminBooksPage />} />
-          </Routes>
-        </Router>
-      </CartProvider>
-    </>
+    <CartProvider>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/entertainers" element={<EntertainerList />} />
+        <Route path="/entertainer/:id" element={<EntertainerDetails />} />
+        <Route path="/add" element={<EntertainerForm />} />
+        <Route path="/edit/:id" element={<EntertainerForm />} />
+      </Routes>
+    </CartProvider>
   );
 }
 
